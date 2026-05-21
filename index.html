@@ -7,267 +7,75 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.0.0/dist/tabler-icons.min.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --bg: #f5f5f0;
-    --surface: #ffffff;
-    --surface2: #f0efea;
-    --text: #1a1a18;
-    --text2: #6b6b67;
-    --text3: #a0a09b;
-    --border: rgba(0,0,0,0.12);
-    --border2: rgba(0,0,0,0.22);
-    --info-bg: #e6f1fb;
-    --info-text: #0c447c;
-    --warn-bg: #faeeda;
-    --warn-text: #854f0b;
-    --danger: #a32d2d;
-    --radius: 8px;
-    --radius-lg: 12px;
+    --bg: #f5f5f0; --surface: #ffffff; --surface2: #f0efea;
+    --text: #1a1a18; --text2: #6b6b67; --text3: #a0a09b;
+    --border: rgba(0,0,0,0.12); --border2: rgba(0,0,0,0.22);
+    --info-bg: #e6f1fb; --info-text: #0c447c;
+    --warn-bg: #faeeda; --warn-text: #854f0b;
+    --radius: 8px; --radius-lg: 12px;
   }
-
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #1c1c1a;
-      --surface: #252523;
-      --surface2: #2e2e2b;
-      --text: #f0efe8;
-      --text2: #a0a09b;
-      --text3: #6b6b67;
-      --border: rgba(255,255,255,0.1);
-      --border2: rgba(255,255,255,0.2);
-      --info-bg: #0c447c;
-      --info-text: #b5d4f4;
-      --warn-bg: #633806;
-      --warn-text: #fac775;
-      --danger: #f09595;
+      --bg: #1c1c1a; --surface: #252523; --surface2: #2e2e2b;
+      --text: #f0efe8; --text2: #a0a09b; --text3: #6b6b67;
+      --border: rgba(255,255,255,0.1); --border2: rgba(255,255,255,0.2);
+      --info-bg: #0c447c; --info-text: #b5d4f4;
+      --warn-bg: #633806; --warn-text: #fac775;
     }
   }
-
-  body {
-    background: var(--bg);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    color: var(--text);
-    min-height: 100vh;
-    padding: 2rem 1.5rem;
-  }
-
-  header {
-    max-width: 1200px;
-    margin: 0 auto 1.5rem;
-  }
-
-  h1 {
-    font-size: 22px;
-    font-weight: 500;
-    margin-bottom: 4px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .subtitle {
-    font-size: 14px;
-    color: var(--text2);
-    margin-bottom: 1.5rem;
-  }
-
-  .controls {
-    max-width: 1200px;
-    margin: 0 auto 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-  }
-
-  .search-wrap {
-    flex: 1;
-    min-width: 180px;
-    position: relative;
-  }
-
-  .search-wrap i {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 16px;
-    color: var(--text3);
-    pointer-events: none;
-  }
-
-  input[type="text"] {
-    width: 100%;
-    padding: 8px 12px 8px 34px;
-    border-radius: var(--radius);
-    border: 0.5px solid var(--border2);
-    background: var(--surface);
-    font-size: 14px;
-    color: var(--text);
-    outline: none;
-    transition: border-color .15s;
-  }
-
-  input[type="text"]:focus {
-    border-color: var(--text2);
-  }
-
-  .tabs {
-    display: flex;
-    gap: 6px;
-  }
-
-  .tab {
-    padding: 7px 16px;
-    border-radius: var(--radius);
-    border: 0.5px solid var(--border2);
-    background: var(--surface);
-    font-size: 14px;
-    color: var(--text);
-    cursor: pointer;
-    transition: .15s;
-    font-family: inherit;
-  }
-
+  body { background: var(--bg); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--text); min-height: 100vh; padding: 2rem 1.5rem; }
+  header { max-width: 1200px; margin: 0 auto 1.5rem; }
+  h1 { font-size: 22px; font-weight: 500; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+  .subtitle { font-size: 14px; color: var(--text2); margin-bottom: 1.5rem; }
+  .controls { max-width: 1200px; margin: 0 auto 1.5rem; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .search-wrap { flex: 1; min-width: 180px; position: relative; }
+  .search-wrap i { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 16px; color: var(--text3); pointer-events: none; }
+  input[type="text"] { width: 100%; padding: 8px 12px 8px 34px; border-radius: var(--radius); border: 0.5px solid var(--border2); background: var(--surface); font-size: 14px; color: var(--text); outline: none; transition: border-color .15s; }
+  input[type="text"]:focus { border-color: var(--text2); }
+  .tabs { display: flex; gap: 6px; }
+  .tab { padding: 7px 16px; border-radius: var(--radius); border: 0.5px solid var(--border2); background: var(--surface); font-size: 14px; color: var(--text); cursor: pointer; transition: .15s; font-family: inherit; }
   .tab:hover { border-color: var(--text2); }
-
-  .tab.active {
-    background: var(--text);
-    color: var(--surface);
-    border-color: var(--text);
-  }
-
-  .sort-wrap select {
-    padding: 7px 12px;
-    border-radius: var(--radius);
-    border: 0.5px solid var(--border2);
-    background: var(--surface);
-    font-size: 14px;
-    color: var(--text);
-    cursor: pointer;
-    font-family: inherit;
-    outline: none;
-  }
-
-  .grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
-    gap: 16px;
-  }
-
-  .card {
-    background: var(--surface);
-    border-radius: var(--radius-lg);
-    border: 0.5px solid var(--border);
-    overflow: hidden;
-    cursor: pointer;
-    transition: border-color .15s, transform .15s;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-  .card:hover {
-    border-color: var(--border2);
-    transform: translateY(-2px);
-  }
-
-  .poster-wrap {
-    width: 100%;
-    aspect-ratio: 2/3;
-    overflow: hidden;
-    background: var(--surface2);
-  }
-
-  .poster-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform .3s;
-  }
-
+  .tab.active { background: var(--text); color: var(--surface); border-color: var(--text); }
+  .sort-wrap select { padding: 7px 12px; border-radius: var(--radius); border: 0.5px solid var(--border2); background: var(--surface); font-size: 14px; color: var(--text); cursor: pointer; font-family: inherit; outline: none; }
+  .grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 16px; }
+  .card { background: var(--surface); border-radius: var(--radius-lg); border: 0.5px solid var(--border); overflow: hidden; cursor: pointer; transition: border-color .15s, transform .15s; color: inherit; display: block; }
+  .card:hover { border-color: var(--border2); transform: translateY(-2px); }
+  .poster-wrap { width: 100%; aspect-ratio: 2/3; overflow: hidden; background: var(--surface2); }
+  .poster-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
   .card:hover .poster-wrap img { transform: scale(1.03); }
-
-  .no-poster {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text3);
-    font-size: 36px;
-  }
-
-  .info {
-    padding: 10px 12px 12px;
-  }
-
-  .card-title {
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 1.4;
-    margin-bottom: 5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .meta {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-wrap: wrap;
-    font-size: 12px;
-    color: var(--text2);
-  }
-
-  .badge {
-    padding: 2px 7px;
-    border-radius: 999px;
-    font-size: 11px;
-    background: var(--info-bg);
-    color: var(--info-text);
-  }
-
-  .badge.film {
-    background: var(--warn-bg);
-    color: var(--warn-text);
-  }
-
-  .rating {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-  }
-
+  .no-poster { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text3); font-size: 36px; }
+  .info { padding: 10px 12px 12px; }
+  .card-title { font-size: 13px; font-weight: 500; line-height: 1.4; margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 12px; color: var(--text2); }
+  .badge { padding: 2px 7px; border-radius: 999px; font-size: 11px; background: var(--info-bg); color: var(--info-text); }
+  .badge.film { background: var(--warn-bg); color: var(--warn-text); }
+  .rating { display: flex; align-items: center; gap: 3px; }
   .rating i { font-size: 11px; color: #e8a020; }
+  .state { max-width: 1200px; margin: 0 auto; text-align: center; padding: 4rem 1rem; color: var(--text2); font-size: 14px; }
+  .state i { font-size: 32px; display: block; margin: 0 auto 12px; color: var(--text3); }
+  .count-bar { max-width: 1200px; margin: 0 auto 1rem; font-size: 13px; color: var(--text2); }
 
-  .state {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 4rem 1rem;
-    color: var(--text2);
-    font-size: 14px;
-  }
-
-  .state i {
-    font-size: 32px;
-    display: block;
-    margin: 0 auto 12px;
-    color: var(--text3);
-  }
-
-  .count-bar {
-    max-width: 1200px;
-    margin: 0 auto 1rem;
-    font-size: 13px;
-    color: var(--text2);
-  }
+  /* MODAL */
+  .modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 100; align-items: center; justify-content: center; padding: 1rem; }
+  .modal-backdrop.open { display: flex; }
+  .modal { background: var(--surface); border-radius: var(--radius-lg); border: 0.5px solid var(--border2); width: 100%; max-width: 420px; overflow: hidden; }
+  .modal-header { display: flex; align-items: center; gap: 12px; padding: 16px 16px 12px; border-bottom: 0.5px solid var(--border); }
+  .modal-poster { width: 48px; height: 72px; object-fit: cover; border-radius: 6px; background: var(--surface2); flex-shrink: 0; }
+  .modal-poster-ph { width: 48px; height: 72px; border-radius: 6px; background: var(--surface2); display: flex; align-items: center; justify-content: center; color: var(--text3); flex-shrink: 0; }
+  .modal-title { font-size: 15px; font-weight: 500; line-height: 1.4; }
+  .modal-year { font-size: 13px; color: var(--text2); margin-top: 2px; }
+  .modal-close { margin-left: auto; background: none; border: none; cursor: pointer; color: var(--text2); font-size: 20px; padding: 4px; border-radius: 6px; }
+  .modal-close:hover { color: var(--text); background: var(--surface2); }
+  .modal-body { padding: 14px 16px 6px; }
+  .modal-label { font-size: 12px; color: var(--text2); margin-bottom: 10px; }
+  .site-list { display: flex; flex-direction: column; gap: 8px; padding-bottom: 16px; }
+  .site-btn { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: var(--radius); border: 0.5px solid var(--border2); background: var(--surface2); color: var(--text); text-decoration: none; font-size: 14px; transition: border-color .15s, background .15s; }
+  .site-btn:hover { border-color: var(--text2); background: var(--surface); }
+  .site-btn .site-icon { width: 20px; height: 20px; border-radius: 4px; object-fit: contain; background: var(--surface); flex-shrink: 0; }
+  .site-btn .site-name { font-weight: 500; flex: 1; }
+  .site-btn .site-desc { font-size: 12px; color: var(--text2); }
+  .site-btn i { color: var(--text3); font-size: 16px; }
 
   @media (max-width: 600px) {
     body { padding: 1.25rem 1rem; }
@@ -306,6 +114,24 @@
   <div class="state"><i class="ti ti-loader-2"></i>Yükleniyor...</div>
 </div>
 
+<!-- İzleme Modalı -->
+<div class="modal-backdrop" id="modalBackdrop" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div id="modalPosterWrap"></div>
+      <div>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-year" id="modalMeta"></div>
+      </div>
+      <button class="modal-close" onclick="closeModalDirect()"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-label">İzlemek istediğin platformu seç:</div>
+      <div class="site-list" id="siteList"></div>
+    </div>
+  </div>
+</div>
+
 <script>
 const API_KEY = '500330721680edb6d5f7f12ba7cd9023';
 const BASE    = 'https://api.themoviedb.org/3';
@@ -313,6 +139,48 @@ const IMG     = 'https://image.tmdb.org/t/p/w342';
 
 let allItems = [];
 let currentTab = 'all';
+
+// İzleme siteleri — başlık encode edilerek URL'e eklenir
+const SITES = [
+  {
+    name: 'Dizipal',
+    desc: 'Türkçe altyazı & dublaj',
+    icon: 'https://www.google.com/s2/favicons?sz=32&domain=dizipal.com',
+    url: (title, origTitle, type) => `https://dizipal2064.com/ajax-search?q=${encodeURIComponent(origTitle||title)}`
+  },
+  {
+    name: 'HDFilmCehennemi',
+    desc: 'Film & dizi arşivi',
+    icon: 'https://www.google.com/s2/favicons?sz=32&domain=hdfilmcehennemi.de',
+    url: (title, origTitle) => `https://www.hdfilmcehennemi.de/?s=${encodeURIComponent(origTitle||title)}`
+  },
+  {
+    name: 'SevenFlix',
+    desc: 'Yüksek kalite içerik',
+    icon: 'https://www.google.com/s2/favicons?sz=32&domain=sevenflix.net',
+    url: (title, origTitle) => `https://sevenflix.net/?s=${encodeURIComponent(origTitle||title)}`
+  },
+  {
+    name: 'FilmModu',
+    desc: 'Türkçe dublaj seçeneği',
+    icon: 'https://www.google.com/s2/favicons?sz=32&domain=filmmodu.com',
+    url: (title, origTitle) => `https://www.filmmodu.com/?s=${encodeURIComponent(origTitle||title)}`
+  },
+  {
+    name: 'DiziBox',
+    desc: 'Dizi odaklı platform',
+    icon: 'https://www.google.com/s2/favicons?sz=32&domain=dizibox.pro',
+    url: (title, origTitle, type) => type === 'tv'
+      ? `https://www.dizibox.pro/?s=${encodeURIComponent(origTitle||title)}`
+      : `https://www.dizibox.pro/?s=${encodeURIComponent(origTitle||title)}`
+  },
+  {
+    name: 'FullHDFilmizlesene',
+    desc: 'Geniş film kataloğu',
+    icon: 'https://www.google.com/s2/favicons?sz=32&domain=fullhdfilmizlesene.com',
+    url: (title, origTitle) => `https://www.fullhdfilmizlesene.com/?s=${encodeURIComponent(origTitle||title)}`
+  }
+];
 
 async function init() {
   try {
@@ -322,13 +190,12 @@ async function init() {
       fetch(`${BASE}/tv/on_the_air?api_key=${API_KEY}&language=tr-TR&page=1`).then(r=>r.json()),
       fetch(`${BASE}/tv/on_the_air?api_key=${API_KEY}&language=tr-TR&page=2`).then(r=>r.json()),
     ]);
-
     const movies = [...(mv1.results||[]), ...(mv2.results||[])].map(m=>({...m, mediaType:'movie'}));
     const shows  = [...(tv1.results||[]), ...(tv2.results||[])].map(s=>({...s, mediaType:'tv'}));
     allItems = [...movies, ...shows];
     render();
   } catch(e) {
-    document.getElementById('grid').innerHTML = `<div class="state"><i class="ti ti-wifi-off"></i>Veriler yüklenemedi. İnternet bağlantınızı kontrol edin.</div>`;
+    document.getElementById('grid').innerHTML = `<div class="state"><i class="ti ti-wifi-off"></i>Veriler yüklenemedi.</div>`;
     document.getElementById('countBar').textContent = '';
   }
 }
@@ -343,49 +210,42 @@ function switchTab(tab, el) {
 function render() {
   const q    = (document.getElementById('searchInput').value || '').toLowerCase().trim();
   const sort = document.getElementById('sortSel').value;
-
   let items = [...allItems];
-
   if (currentTab !== 'all') items = items.filter(i => i.mediaType === currentTab);
-
   if (q) items = items.filter(i =>
     (i.title||i.name||'').toLowerCase().includes(q) ||
     (i.original_title||i.original_name||'').toLowerCase().includes(q)
   );
-
-  if (sort === 'rating') {
-    items.sort((a,b) => (b.vote_average||0) - (a.vote_average||0));
-  } else if (sort === 'alpha') {
-    items.sort((a,b) => (a.title||a.name||'').localeCompare(b.title||b.name||'', 'tr'));
-  } else {
-    items.sort((a,b) => {
-      const da = a.release_date||a.first_air_date||'';
-      const db = b.release_date||b.first_air_date||'';
-      return db.localeCompare(da);
-    });
-  }
+  if (sort === 'rating') items.sort((a,b) => (b.vote_average||0) - (a.vote_average||0));
+  else if (sort === 'alpha') items.sort((a,b) => (a.title||a.name||'').localeCompare(b.title||b.name||'', 'tr'));
+  else items.sort((a,b) => {
+    const da = a.release_date||a.first_air_date||'';
+    const db = b.release_date||b.first_air_date||'';
+    return db.localeCompare(da);
+  });
 
   document.getElementById('countBar').textContent = `${items.length} içerik`;
-
   const grid = document.getElementById('grid');
-
-  if (!items.length) {
-    grid.innerHTML = `<div class="state"><i class="ti ti-search-off"></i>İçerik bulunamadı.</div>`;
-    return;
-  }
+  if (!items.length) { grid.innerHTML = `<div class="state"><i class="ti ti-search-off"></i>İçerik bulunamadı.</div>`; return; }
 
   grid.innerHTML = items.map(item => {
     const title  = item.title || item.name || '—';
     const year   = (item.release_date || item.first_air_date || '').substring(0, 4);
     const rating = item.vote_average ? Math.round(item.vote_average * 10) / 10 : null;
     const isFilm = item.mediaType === 'movie';
-    const url    = `https://www.themoviedb.org/${item.mediaType}/${item.id}?language=tr-TR`;
-
+    const dataAttr = encodeURIComponent(JSON.stringify({
+      id: item.id,
+      title: title,
+      origTitle: item.original_title || item.original_name || title,
+      year,
+      rating,
+      mediaType: item.mediaType,
+      poster: item.poster_path || ''
+    }));
     const poster = item.poster_path
       ? `<img src="${IMG}${item.poster_path}" alt="${title}" loading="lazy">`
       : `<div class="no-poster"><i class="ti ti-photo-off"></i></div>`;
-
-    return `<a class="card" href="${url}" target="_blank" rel="noopener" title="${title}">
+    return `<div class="card" onclick="openModal(decodeURIComponent('${dataAttr}'))">
       <div class="poster-wrap">${poster}</div>
       <div class="info">
         <div class="card-title">${title}</div>
@@ -395,9 +255,49 @@ function render() {
           ${rating ? `<span class="rating"><i class="ti ti-star"></i>${rating}</span>` : ''}
         </div>
       </div>
-    </a>`;
+    </div>`;
   }).join('');
 }
+
+function openModal(dataStr) {
+  const item = JSON.parse(dataStr);
+  document.getElementById('modalTitle').textContent = item.title;
+  document.getElementById('modalMeta').textContent = [
+    item.year,
+    item.mediaType === 'movie' ? 'Film' : 'Dizi',
+    item.rating ? `⭐ ${item.rating}` : ''
+  ].filter(Boolean).join(' · ');
+
+  const pw = document.getElementById('modalPosterWrap');
+  pw.innerHTML = item.poster
+    ? `<img class="modal-poster" src="${IMG}${item.poster}" alt="${item.title}">`
+    : `<div class="modal-poster-ph"><i class="ti ti-photo-off"></i></div>`;
+
+  const list = document.getElementById('siteList');
+  list.innerHTML = SITES.map(site => {
+    const href = site.url(item.title, item.origTitle, item.mediaType);
+    return `<a class="site-btn" href="${href}" target="_blank" rel="noopener">
+      <img class="site-icon" src="${site.icon}" alt="" onerror="this.style.display='none'">
+      <div>
+        <div class="site-name">${site.name}</div>
+        <div class="site-desc">${site.desc}</div>
+      </div>
+      <i class="ti ti-external-link"></i>
+    </a>`;
+  }).join('');
+
+  document.getElementById('modalBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalBackdrop')) closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('modalBackdrop').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
 
 init();
 </script>
