@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Son Eklenenler</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.0.0/dist/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f5f5f0;
+    --surface: #ffffff;
+    --surface2: #f0efea;
+    --text: #1a1a18;
+    --text2: #6b6b67;
+    --text3: #a0a09b;
+    --border: rgba(0,0,0,0.12);
+    --border2: rgba(0,0,0,0.22);
+    --info-bg: #e6f1fb;
+    --info-text: #0c447c;
+    --warn-bg: #faeeda;
+    --warn-text: #854f0b;
+    --danger: #a32d2d;
+    --radius: 8px;
+    --radius-lg: 12px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1c1a;
+      --surface: #252523;
+      --surface2: #2e2e2b;
+      --text: #f0efe8;
+      --text2: #a0a09b;
+      --text3: #6b6b67;
+      --border: rgba(255,255,255,0.1);
+      --border2: rgba(255,255,255,0.2);
+      --info-bg: #0c447c;
+      --info-text: #b5d4f4;
+      --warn-bg: #633806;
+      --warn-text: #fac775;
+      --danger: #f09595;
+    }
+  }
+
+  body {
+    background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 2rem 1.5rem;
+  }
+
+  header {
+    max-width: 1200px;
+    margin: 0 auto 1.5rem;
+  }
+
+  h1 {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--text2);
+    margin-bottom: 1.5rem;
+  }
+
+  .controls {
+    max-width: 1200px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .search-wrap {
+    flex: 1;
+    min-width: 180px;
+    position: relative;
+  }
+
+  .search-wrap i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: var(--text3);
+    pointer-events: none;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 8px 12px 8px 34px;
+    border-radius: var(--radius);
+    border: 0.5px solid var(--border2);
+    background: var(--surface);
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    transition: border-color .15s;
+  }
+
+  input[type="text"]:focus {
+    border-color: var(--text2);
+  }
+
+  .tabs {
+    display: flex;
+    gap: 6px;
+  }
+
+  .tab {
+    padding: 7px 16px;
+    border-radius: var(--radius);
+    border: 0.5px solid var(--border2);
+    background: var(--surface);
+    font-size: 14px;
+    color: var(--text);
+    cursor: pointer;
+    transition: .15s;
+    font-family: inherit;
+  }
+
+  .tab:hover { border-color: var(--text2); }
+
+  .tab.active {
+    background: var(--text);
+    color: var(--surface);
+    border-color: var(--text);
+  }
+
+  .sort-wrap select {
+    padding: 7px 12px;
+    border-radius: var(--radius);
+    border: 0.5px solid var(--border2);
+    background: var(--surface);
+    font-size: 14px;
+    color: var(--text);
+    cursor: pointer;
+    font-family: inherit;
+    outline: none;
+  }
+
+  .grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 0.5px solid var(--border);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color .15s, transform .15s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .card:hover {
+    border-color: var(--border2);
+    transform: translateY(-2px);
+  }
+
+  .poster-wrap {
+    width: 100%;
+    aspect-ratio: 2/3;
+    overflow: hidden;
+    background: var(--surface2);
+  }
+
+  .poster-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .3s;
+  }
+
+  .card:hover .poster-wrap img { transform: scale(1.03); }
+
+  .no-poster {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text3);
+    font-size: 36px;
+  }
+
+  .info {
+    padding: 10px 12px 12px;
+  }
+
+  .card-title {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: var(--text2);
+  }
+
+  .badge {
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-size: 11px;
+    background: var(--info-bg);
+    color: var(--info-text);
+  }
+
+  .badge.film {
+    background: var(--warn-bg);
+    color: var(--warn-text);
+  }
+
+  .rating {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .rating i { font-size: 11px; color: #e8a020; }
+
+  .state {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 4rem 1rem;
+    color: var(--text2);
+    font-size: 14px;
+  }
+
+  .state i {
+    font-size: 32px;
+    display: block;
+    margin: 0 auto 12px;
+    color: var(--text3);
+  }
+
+  .count-bar {
+    max-width: 1200px;
+    margin: 0 auto 1rem;
+    font-size: 13px;
+    color: var(--text2);
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 1.25rem 1rem; }
+    .grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1><i class="ti ti-device-tv"></i> Son eklenenler</h1>
+  <p class="subtitle">Güncel film ve dizi içerikleri</p>
+</header>
+
+<div class="controls">
+  <div class="search-wrap">
+    <i class="ti ti-search"></i>
+    <input type="text" id="searchInput" placeholder="İçerik ara..." oninput="render()">
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('all',this)">Tümü</button>
+    <button class="tab" onclick="switchTab('movie',this)">Film</button>
+    <button class="tab" onclick="switchTab('tv',this)">Dizi</button>
+  </div>
+  <div class="sort-wrap">
+    <select id="sortSel" onchange="render()">
+      <option value="date">En yeni</option>
+      <option value="rating">Puan</option>
+      <option value="alpha">A-Z</option>
+    </select>
+  </div>
+</div>
+
+<p class="count-bar" id="countBar"></p>
+<div id="grid" class="grid">
+  <div class="state"><i class="ti ti-loader-2"></i>Yükleniyor...</div>
+</div>
+
+<script>
+const API_KEY = '500330721680edb6d5f7f12ba7cd9023';
+const BASE    = 'https://api.themoviedb.org/3';
+const IMG     = 'https://image.tmdb.org/t/p/w342';
+
+let allItems = [];
+let currentTab = 'all';
+
+async function init() {
+  try {
+    const [mv1, mv2, tv1, tv2] = await Promise.all([
+      fetch(`${BASE}/movie/now_playing?api_key=${API_KEY}&language=tr-TR&page=1`).then(r=>r.json()),
+      fetch(`${BASE}/movie/now_playing?api_key=${API_KEY}&language=tr-TR&page=2`).then(r=>r.json()),
+      fetch(`${BASE}/tv/on_the_air?api_key=${API_KEY}&language=tr-TR&page=1`).then(r=>r.json()),
+      fetch(`${BASE}/tv/on_the_air?api_key=${API_KEY}&language=tr-TR&page=2`).then(r=>r.json()),
+    ]);
+
+    const movies = [...(mv1.results||[]), ...(mv2.results||[])].map(m=>({...m, mediaType:'movie'}));
+    const shows  = [...(tv1.results||[]), ...(tv2.results||[])].map(s=>({...s, mediaType:'tv'}));
+    allItems = [...movies, ...shows];
+    render();
+  } catch(e) {
+    document.getElementById('grid').innerHTML = `<div class="state"><i class="ti ti-wifi-off"></i>Veriler yüklenemedi. İnternet bağlantınızı kontrol edin.</div>`;
+    document.getElementById('countBar').textContent = '';
+  }
+}
+
+function switchTab(tab, el) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  render();
+}
+
+function render() {
+  const q    = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+  const sort = document.getElementById('sortSel').value;
+
+  let items = [...allItems];
+
+  if (currentTab !== 'all') items = items.filter(i => i.mediaType === currentTab);
+
+  if (q) items = items.filter(i =>
+    (i.title||i.name||'').toLowerCase().includes(q) ||
+    (i.original_title||i.original_name||'').toLowerCase().includes(q)
+  );
+
+  if (sort === 'rating') {
+    items.sort((a,b) => (b.vote_average||0) - (a.vote_average||0));
+  } else if (sort === 'alpha') {
+    items.sort((a,b) => (a.title||a.name||'').localeCompare(b.title||b.name||'', 'tr'));
+  } else {
+    items.sort((a,b) => {
+      const da = a.release_date||a.first_air_date||'';
+      const db = b.release_date||b.first_air_date||'';
+      return db.localeCompare(da);
+    });
+  }
+
+  document.getElementById('countBar').textContent = `${items.length} içerik`;
+
+  const grid = document.getElementById('grid');
+
+  if (!items.length) {
+    grid.innerHTML = `<div class="state"><i class="ti ti-search-off"></i>İçerik bulunamadı.</div>`;
+    return;
+  }
+
+  grid.innerHTML = items.map(item => {
+    const title  = item.title || item.name || '—';
+    const year   = (item.release_date || item.first_air_date || '').substring(0, 4);
+    const rating = item.vote_average ? Math.round(item.vote_average * 10) / 10 : null;
+    const isFilm = item.mediaType === 'movie';
+    const url    = `https://www.themoviedb.org/${item.mediaType}/${item.id}?language=tr-TR`;
+
+    const poster = item.poster_path
+      ? `<img src="${IMG}${item.poster_path}" alt="${title}" loading="lazy">`
+      : `<div class="no-poster"><i class="ti ti-photo-off"></i></div>`;
+
+    return `<a class="card" href="${url}" target="_blank" rel="noopener" title="${title}">
+      <div class="poster-wrap">${poster}</div>
+      <div class="info">
+        <div class="card-title">${title}</div>
+        <div class="meta">
+          <span class="badge${isFilm?' film':''}">${isFilm?'Film':'Dizi'}</span>
+          ${year ? `<span>${year}</span>` : ''}
+          ${rating ? `<span class="rating"><i class="ti ti-star"></i>${rating}</span>` : ''}
+        </div>
+      </div>
+    </a>`;
+  }).join('');
+}
+
+init();
+</script>
+</body>
+</html>
